@@ -43,7 +43,7 @@ function App() {
             .map((item) => {
               const { _id, image, name, location, price } = item
               return (
-                <div key={_id}>
+                <div className='item' key={_id}>
                   <img src={urlFor(image.asset._ref).width(300).url()} />
                   <h3>{name}</h3>
                   <h5>{location}</h5>
