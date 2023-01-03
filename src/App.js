@@ -1,5 +1,17 @@
 import { useState, useEffect } from 'react'
+import imageUrlBuilder from '@sanity/image-url'
 import './App.css'
+
+const builder = imageUrlBuilder({
+  projectId: 'zni84f99',
+  dataset: 'production',
+  apiVersion: '2021-06-07',
+  // apiVersion: '2021-03-25',
+})
+
+function urlFor(source) {
+  return builder.image(source)
+}
 
 function App() {
   const [items, setItems] = useState([])
@@ -23,9 +35,22 @@ function App() {
         'Loading'
       ) : (
         <div className='items'>
-          {items.map((item) => (
-            <h3>{item.name}</h3>
-          ))}
+          {items
+            .sort((a, b) => {
+              if (a.location.toLowerCase() < b.location.toLowerCase()) return -1
+              if (a.location.toLowerCase() > b.location.toLowerCase()) return 1
+            })
+            .map((item) => {
+              const { _id, image, name, location, price } = item
+              return (
+                <div key={_id}>
+                  <img src={urlFor(image.asset._ref).width(300).url()} />
+                  <h3>{name}</h3>
+                  <h5>{location}</h5>
+                  <h6>{price}</h6>
+                </div>
+              )
+            })}
         </div>
       )}
     </div>
