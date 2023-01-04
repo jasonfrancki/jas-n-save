@@ -17,10 +17,23 @@ function urlFor(source) {
 
 function App() {
   const [items, setItems] = useState([])
+  const [query, setQuery] = useState('')
+  const [results, setResults] = useState([])
 
   useEffect(() => {
     getItems()
   }, [])
+
+  useEffect(
+    () => {
+      const searchResults = items.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase())
+      )
+      setResults(searchResults)
+    },
+    // }
+    [query]
+  )
 
   const url =
     'https://zni84f99.api.sanity.io/v2021-06-07/data/query/production?query=*[_type%20==%20%22item%22]'
@@ -29,12 +42,13 @@ function App() {
     const response = await fetch(url)
     const data = await response.json()
     setItems(data.result)
+    setResults(data.result)
   }
 
   return (
     <div className='App'>
-      <Header />
-      {!items ? 'Loading' : <Items items={items} urlFor={urlFor} />}
+      <Header query={query} setQuery={setQuery} />
+      {!items ? 'Loading' : <Items results={results} urlFor={urlFor} />}
     </div>
   )
 }

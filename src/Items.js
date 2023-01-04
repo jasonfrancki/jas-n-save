@@ -1,9 +1,9 @@
 import './Items.css'
 
-const Items = ({ items, urlFor }) => {
+const Items = ({ results, urlFor }) => {
   return (
     <div className='items'>
-      {items
+      {results
         .sort((a, b) => {
           if (a.location.toLowerCase() < b.location.toLowerCase()) return -1
           if (a.location.toLowerCase() > b.location.toLowerCase()) return 1
