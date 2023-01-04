@@ -3,6 +3,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import Items from './Items'
 import './App.css'
 import Header from './Header'
+import { Snackbar, SnackbarContent, Button, IconButton } from '@mui/material'
 
 const builder = imageUrlBuilder({
   projectId: 'zni84f99',
@@ -20,19 +21,38 @@ function App() {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
   const [cart, setCart] = useState([])
+  const [snackOpen, setSnackOpen] = useState(false)
+  const [cartMessage, setCartMessage] = useState('')
 
   const addToCart = (id) => {
     const newCartItem = results.filter((item) => item._id === id)
     const cartCheck = cart.some((cartItem) => cartItem._id === id)
     console.log(cartCheck)
-
+    setSnackOpen(true)
     if (cartCheck) {
-      alert('already in cart')
+      setCartMessage('already in cart')
     } else {
       setCart([...cart, ...newCartItem])
-      alert('added to cart')
+      setCartMessage('added to cart')
     }
   }
+
+  const handleSnackClose = () => {
+    setSnackOpen(false)
+  }
+
+  const action = (
+    <>
+      <IconButton
+        size='small'
+        aria-label='close'
+        color='inherit'
+        onClick={handleSnackClose}
+      >
+        X
+      </IconButton>
+    </>
+  )
 
   useEffect(() => {
     getItems()
@@ -67,6 +87,21 @@ function App() {
       ) : (
         <Items results={results} urlFor={urlFor} addToCart={addToCart} />
       )}
+      <Snackbar
+        style={{ color: 'red' }}
+        open={snackOpen}
+        autoHideDuration={1500}
+        onClose={handleSnackClose}
+        action={action}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <SnackbarContent
+          style={{
+            backgroundColor: 'teal',
+          }}
+          message={<span id='client-snackbar'>{cartMessage}</span>}
+        ></SnackbarContent>
+      </Snackbar>
     </div>
   )
 }
