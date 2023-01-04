@@ -1,5 +1,7 @@
 # ToDo
 
+- snackbar for add-to-cart confirmation https://mui.com/material-ui/react-snackbar/
+- localstorage for cart state
 - add react router for Cart page
 - CSS styling
 
