@@ -21,6 +21,11 @@
   justify-content: space-between;
 }
 
+.add-button {
+  padding: 1rem;
+  margin-top: 3rem;
+}
+
 @media screen and (min-width: 700px) {
   .items {
     grid-template-columns: 1fr 1fr;

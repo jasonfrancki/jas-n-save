@@ -19,6 +19,20 @@ function App() {
   const [items, setItems] = useState([])
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
+  const [cart, setCart] = useState([])
+
+  const addToCart = (id) => {
+    const newCartItem = results.filter((item) => item._id === id)
+    const cartCheck = cart.some((cartItem) => cartItem._id === id)
+    console.log(cartCheck)
+
+    if (cartCheck) {
+      alert('already in cart')
+    } else {
+      setCart([...cart, ...newCartItem])
+      alert('added to cart')
+    }
+  }
 
   useEffect(() => {
     getItems()
@@ -48,7 +62,11 @@ function App() {
   return (
     <div className='App'>
       <Header query={query} setQuery={setQuery} />
-      {!items ? 'Loading' : <Items results={results} urlFor={urlFor} />}
+      {!items ? (
+        'Loading'
+      ) : (
+        <Items results={results} urlFor={urlFor} addToCart={addToCart} />
+      )}
     </div>
   )
 }

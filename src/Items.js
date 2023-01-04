@@ -1,6 +1,6 @@
 import './Items.css'
 
-const Items = ({ results, urlFor }) => {
+const Items = ({ results, urlFor, addToCart }) => {
   return (
     <div className='items'>
       {results
@@ -18,6 +18,9 @@ const Items = ({ results, urlFor }) => {
               <h3>{name}</h3>
               <h5>{location}</h5>
               <h6>{price}</h6>
+              <button className='add-button' onClick={() => addToCart(_id)}>
+                Add to cart
+              </button>
             </div>
           )
         })}
