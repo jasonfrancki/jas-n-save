@@ -1,0 +1,34 @@
+.items {
+  display: grid;
+  padding: 10rem 5rem 5rem;
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 3rem;
+}
+
+.items .img-container {
+  margin: auto;
+}
+
+.items img {
+  width: 100%;
+}
+
+.item {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 700px) {
+  .items {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .items {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
