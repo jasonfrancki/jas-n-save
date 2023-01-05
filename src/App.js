@@ -5,6 +5,7 @@ import './App.css'
 import Header from './Header'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Cart from './Cart'
 
 const builder = imageUrlBuilder({
   projectId: 'zni84f99',
@@ -28,7 +29,6 @@ function App() {
   const addToCart = (id) => {
     const newCartItem = results.filter((item) => item._id === id)
     const cartCheck = cart.some((cartItem) => cartItem._id === id)
-    console.log(cartCheck)
     setSnackOpen(true)
     if (cartCheck) {
       setCartMessage('already in cart')
@@ -71,16 +71,26 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <Header query={query} setQuery={setQuery} />
-
-        <Items
-          results={results}
-          urlFor={urlFor}
-          addToCart={addToCart}
-          handleSnackClose={handleSnackClose}
-          snackOpen={snackOpen}
-          cartMessage={cartMessage}
-          item={items}
-        />
+        <Routes>
+          <Route
+            path='/'
+            element={
+              <Items
+                results={results}
+                urlFor={urlFor}
+                addToCart={addToCart}
+                handleSnackClose={handleSnackClose}
+                snackOpen={snackOpen}
+                cartMessage={cartMessage}
+                item={items}
+              />
+            }
+          />
+          <Route
+            path='cart'
+            element={<Cart results={cart} urlFor={urlFor} />}
+          />
+        </Routes>
       </div>
     </BrowserRouter>
   )
