@@ -1,6 +1,27 @@
+import { Snackbar, SnackbarContent, Button, IconButton } from '@mui/material'
 import './Items.css'
 
-const Items = ({ results, urlFor, addToCart }) => {
+const Items = ({
+  results,
+  urlFor,
+  addToCart,
+  handleSnackClose,
+  snackOpen,
+  cartMessage,
+}) => {
+  const action = (
+    <>
+      <IconButton
+        size='small'
+        aria-label='close'
+        color='inherit'
+        onClick={handleSnackClose}
+      >
+        X
+      </IconButton>
+    </>
+  )
+
   return (
     <div className='items'>
       {results
@@ -24,6 +45,21 @@ const Items = ({ results, urlFor, addToCart }) => {
             </div>
           )
         })}
+      <Snackbar
+        style={{ color: 'red' }}
+        open={snackOpen}
+        autoHideDuration={1500}
+        onClose={handleSnackClose}
+        action={action}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <SnackbarContent
+          style={{
+            backgroundColor: 'teal',
+          }}
+          message={<span id='client-snackbar'>{cartMessage}</span>}
+        ></SnackbarContent>
+      </Snackbar>
     </div>
   )
 }

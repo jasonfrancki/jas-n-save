@@ -3,7 +3,8 @@ import imageUrlBuilder from '@sanity/image-url'
 import Items from './Items'
 import './App.css'
 import Header from './Header'
-import { Snackbar, SnackbarContent, Button, IconButton } from '@mui/material'
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const builder = imageUrlBuilder({
   projectId: 'zni84f99',
@@ -41,19 +42,6 @@ function App() {
     setSnackOpen(false)
   }
 
-  const action = (
-    <>
-      <IconButton
-        size='small'
-        aria-label='close'
-        color='inherit'
-        onClick={handleSnackClose}
-      >
-        X
-      </IconButton>
-    </>
-  )
-
   useEffect(() => {
     getItems()
   }, [])
@@ -80,29 +68,23 @@ function App() {
   }
 
   return (
-    <div className='App'>
-      <Header query={query} setQuery={setQuery} />
-      {!items ? (
-        'Loading'
-      ) : (
-        <Items results={results} urlFor={urlFor} addToCart={addToCart} />
-      )}
-      <Snackbar
-        style={{ color: 'red' }}
-        open={snackOpen}
-        autoHideDuration={1500}
-        onClose={handleSnackClose}
-        action={action}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <SnackbarContent
-          style={{
-            backgroundColor: 'teal',
-          }}
-          message={<span id='client-snackbar'>{cartMessage}</span>}
-        ></SnackbarContent>
-      </Snackbar>
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <Header query={query} setQuery={setQuery} />
+        {!items ? (
+          'Loading'
+        ) : (
+          <Items
+            results={results}
+            urlFor={urlFor}
+            addToCart={addToCart}
+            handleSnackClose={handleSnackClose}
+            snackOpen={snackOpen}
+            cartMessage={cartMessage}
+          />
+        )}
+      </div>
+    </BrowserRouter>
   )
 }
 
