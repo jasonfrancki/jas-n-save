@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './Header.css'
 
 const Header = ({ query, setQuery }) => {
@@ -12,7 +13,9 @@ const Header = ({ query, setQuery }) => {
             setQuery(e.target.value)
           }}
         />
-        <button className='cart-button'>Cart</button>
+        <Link to='cart'>
+          <button className='cart-button'>Cart</button>
+        </Link>
       </div>
     </header>
   )
