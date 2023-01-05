@@ -31,8 +31,8 @@ const Items = ({
       ) : (
         results
           .sort((a, b) => {
-            if (a.location.toLowerCase() < b.location.toLowerCase()) return -1
-            if (a.location.toLowerCase() > b.location.toLowerCase()) return 1
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
           })
           .map((item) => {
             const { _id, image, name, location, price } = item

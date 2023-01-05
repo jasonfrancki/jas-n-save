@@ -11,7 +11,7 @@ const Cart = ({ results, urlFor }) => {
       <div className='items cart-items'>
         {results.length < 1 ? (
           <>
-            <div>'Loading'</div>
+            <div>Cart is empty</div>
           </>
         ) : (
           results
