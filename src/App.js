@@ -88,7 +88,7 @@ function App() {
           />
           <Route
             path='cart'
-            element={<Cart results={cart} urlFor={urlFor} />}
+            element={<Cart results={cart} setCart={setCart} urlFor={urlFor} />}
           />
         </Routes>
       </div>
