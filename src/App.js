@@ -71,18 +71,16 @@ function App() {
     <BrowserRouter>
       <div className='App'>
         <Header query={query} setQuery={setQuery} />
-        {!items ? (
-          'Loading'
-        ) : (
-          <Items
-            results={results}
-            urlFor={urlFor}
-            addToCart={addToCart}
-            handleSnackClose={handleSnackClose}
-            snackOpen={snackOpen}
-            cartMessage={cartMessage}
-          />
-        )}
+
+        <Items
+          results={results}
+          urlFor={urlFor}
+          addToCart={addToCart}
+          handleSnackClose={handleSnackClose}
+          snackOpen={snackOpen}
+          cartMessage={cartMessage}
+          item={items}
+        />
       </div>
     </BrowserRouter>
   )
