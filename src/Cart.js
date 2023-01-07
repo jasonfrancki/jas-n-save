@@ -35,12 +35,6 @@ const Cart = ({ results, urlFor, setCart }) => {
             })
         )}
       </div>
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      <Link className='home-link' to='/'>
-        Home
-      </Link>
     </div>
   )
 }
