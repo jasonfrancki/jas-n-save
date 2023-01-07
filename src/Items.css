@@ -11,7 +11,7 @@
 }
 
 .items img {
-  width: 100%;
+  /* width: 100%; */
 }
 
 .item {
@@ -21,9 +21,16 @@
   justify-content: space-between;
 }
 
+.item-image {
+  /* height: 100%; */
+  height: 200px;
+  /* max-width: 50%; */
+  aspect-ratio: 1/1;
+}
+
 .add-button {
   padding: 1rem;
-  margin-top: 3rem;
+  width: 100%;
 }
 
 @media screen and (min-width: 700px) {
