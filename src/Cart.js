@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
 import './Cart.css'
 
-const Cart = ({ results, urlFor }) => {
+const Cart = ({ results, urlFor, setCart }) => {
   return (
     <div className='cart'>
       <h1>Cart</h1>
+      <button onClick={() => setCart([])}>Empty</button>
       {/*  */}
       {/*  */}
       {/*  */}
