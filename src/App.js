@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import imageUrlBuilder from '@sanity/image-url'
 import Items from './Items'
 import './App.css'
-import Header from './Header2'
+import Header from './Header'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cart from './Cart'

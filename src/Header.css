@@ -1,5 +1,5 @@
 .header {
-  /* background-color: whitesmoke; */
+  background-color: gray;
   width: 100vw;
   padding: 1.5rem;
   position: fixed;
@@ -13,10 +13,23 @@
 .header input {
   font-size: 3rem;
   width: 75%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  border: 1px solid gray;
 }
 
 .header-button {
   font-size: 2rem;
   padding: 1rem;
   height: 100%;
+  width: 5rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  border: 1px solid gray;
 }
