@@ -1,8 +1,11 @@
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import CssBaseline from '@mui/material/CssBaseline'
 import { useState, useEffect } from 'react'
 import imageUrlBuilder from '@sanity/image-url'
 import Items from './Items'
 import './App.css'
-import Header from './Header'
+import Header from './Header2'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Cart from './Cart'
@@ -67,32 +70,53 @@ function App() {
     setResults(data.result)
   }
 
+  let darkCheck = window.matchMedia('(prefers-color-scheme: dark)').matches
+  const [dark, setDark] = useState(darkCheck)
+
+  const darkTheme = createTheme({
+    palette: {
+      // mode: 'dark'
+      mode: dark ? 'dark' : 'light',
+    },
+  })
+
   return (
-    <BrowserRouter>
-      <div className='App'>
-        <Header query={query} setQuery={setQuery} />
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <Items
-                results={results}
-                urlFor={urlFor}
-                addToCart={addToCart}
-                handleSnackClose={handleSnackClose}
-                snackOpen={snackOpen}
-                cartMessage={cartMessage}
-                item={items}
-              />
-            }
+    <ThemeProvider theme={darkTheme}>
+      <GlobalStyles />
+      <CssBaseline />
+      <BrowserRouter>
+        <div className='App'>
+          <Header
+            query={query}
+            setQuery={setQuery}
+            dark={dark}
+            setDark={setDark}
           />
-          <Route
-            path='cart'
-            element={<Cart results={cart} setCart={setCart} urlFor={urlFor} />}
-          />
-        </Routes>
-      </div>
-    </BrowserRouter>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <Items
+                  results={results}
+                  urlFor={urlFor}
+                  addToCart={addToCart}
+                  handleSnackClose={handleSnackClose}
+                  snackOpen={snackOpen}
+                  cartMessage={cartMessage}
+                  item={items}
+                />
+              }
+            />
+            <Route
+              path='cart'
+              element={
+                <Cart results={cart} setCart={setCart} urlFor={urlFor} />
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </ThemeProvider>
   )
 }
 
