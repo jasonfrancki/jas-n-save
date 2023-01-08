@@ -14,7 +14,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import { useLocation } from 'react-router-dom'
-import { Autocomplete, TextField } from '@mui/material'
+import { Autocomplete, TextField, Badge } from '@mui/material'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -58,7 +58,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-const Header = ({ query, setQuery, dark, setDark, items }) => {
+const Header = ({ setQuery, dark, setDark, items, cart }) => {
   return (
     <Box className='header-box' sx={{ flexGrow: 1 }}>
       <AppBar position='fixed'>
@@ -73,7 +73,9 @@ const Header = ({ query, setQuery, dark, setDark, items }) => {
           >
             {useLocation().pathname === '/' ? (
               <Link style={{ fontSize: 0 }} to='cart'>
-                <ShoppingCartIcon />
+                <Badge badgeContent={cart.length} color='secondary'>
+                  <ShoppingCartIcon />
+                </Badge>
               </Link>
             ) : (
               <Link style={{ fontSize: 0 }} to='/'>

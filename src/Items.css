@@ -10,10 +10,6 @@
   margin: auto;
 }
 
-.items img {
-  /* width: 100%; */
-}
-
 .item {
   border: 2px solid black;
   display: flex;

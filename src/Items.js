@@ -13,6 +13,7 @@ import {
   Button,
   IconButton,
   Typography,
+  Alert,
 } from '@mui/material'
 import './Items.css'
 
@@ -103,19 +104,22 @@ const Items = ({
         </Grid>
       </Container>
       <Snackbar
-        style={{ color: 'red' }}
         open={snackOpen}
         autoHideDuration={1500}
         onClose={handleSnackClose}
         action={action}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <SnackbarContent
-          style={{
-            backgroundColor: 'teal',
-          }}
-          message={<span id='client-snackbar'>{cartMessage}</span>}
-        ></SnackbarContent>
+        <Alert
+          sx={{ width: '100%' }}
+          severity={
+            cartMessage.toLowerCase() === 'added to cart'
+              ? 'success'
+              : 'warning'
+          }
+        >
+          <span id='client-snackbar'>{cartMessage}</span>
+        </Alert>
       </Snackbar>
     </React.Fragment>
     // <div className='items'>
