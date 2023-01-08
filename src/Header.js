@@ -14,6 +14,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import { Link } from 'react-router-dom'
 import './Header.css'
 import { useLocation } from 'react-router-dom'
+import { Autocomplete, TextField } from '@mui/material'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -57,17 +58,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }))
 
-const Header = ({ query, setQuery, dark, setDark }) => {
+const Header = ({ query, setQuery, dark, setDark, items }) => {
   return (
     <Box className='header-box' sx={{ flexGrow: 1 }}>
       <AppBar position='fixed'>
         <Toolbar>
+          {' '}
           <IconButton
             size='large'
             edge='start'
             color='inherit'
             aria-label={dark ? 'shopping cart' : 'list items'}
-            sx={{ mr: 2 }}
+            sx={{ ml: 2 }}
           >
             {useLocation().pathname === '/' ? (
               <Link style={{ fontSize: 0 }} to='cart'>
@@ -85,7 +87,7 @@ const Header = ({ query, setQuery, dark, setDark }) => {
             edge='start'
             color='inherit'
             aria-label={dark ? 'shopping cart' : 'list items'}
-            sx={{ mr: 2 }}
+            sx={{ ml: 2 }}
           >
             {dark ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
@@ -97,7 +99,25 @@ const Header = ({ query, setQuery, dark, setDark }) => {
           >
             Jas 'n Save
           </Typography>
-          <Search
+          {useLocation().pathname === '/' ? (
+            <Autocomplete
+              selectOnFocus
+              clearOnBlur
+              freeSolo
+              disablePortal
+              id='combo-box-demo'
+              options={items}
+              getOptionLabel={(option) => option.name}
+              sx={{ width: 300 }}
+              renderInput={(params) => <TextField {...params} label='Items' />}
+              onInputChange={(e, v) => {
+                setQuery(v)
+              }}
+            />
+          ) : (
+            ''
+          )}
+          {/* <Search
             value={query}
             onChange={(e) => {
               setQuery(e.target.value)
@@ -110,7 +130,7 @@ const Header = ({ query, setQuery, dark, setDark }) => {
               placeholder='Search…'
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>

@@ -41,7 +41,10 @@ function App() {
     }
   }
 
-  const handleSnackClose = () => {
+  const handleSnackClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return
+    }
     setSnackOpen(false)
   }
 
@@ -91,7 +94,9 @@ function App() {
             setQuery={setQuery}
             dark={dark}
             setDark={setDark}
+            items={items}
           />
+
           <Routes>
             <Route
               path='/'

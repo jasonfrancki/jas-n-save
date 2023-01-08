@@ -108,7 +108,7 @@ const Items = ({
         autoHideDuration={1500}
         onClose={handleSnackClose}
         action={action}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <SnackbarContent
           style={{
