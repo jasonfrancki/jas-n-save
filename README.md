@@ -1,6 +1,7 @@
 # ToDo
 
 - snackbar for add-to-cart confirmation https://mui.com/material-ui/react-snackbar/
+- make snackbar clickable to go to cart if possible?
 - localstorage for cart state
 - add react router for Cart page
 - CSS styling
