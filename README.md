@@ -7,6 +7,7 @@
 - localstorage for cart state
 - add react router for Cart page
 - CSS styling
+- favorites for common groceries to browse when looking for ideas
 
 # Getting Started with Create React App
 
