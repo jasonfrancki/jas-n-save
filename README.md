@@ -1,5 +1,7 @@
 # ToDo
 
+- badge number on cart icon to show how many items - maybe an animation instead of snackbar that shows the increase for confirmation
+- add to cart button animation/transition to show click
 - snackbar for add-to-cart confirmation https://mui.com/material-ui/react-snackbar/
 - localstorage for cart state
 - add react router for Cart page
