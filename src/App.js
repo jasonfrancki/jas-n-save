@@ -95,6 +95,7 @@ function App() {
             dark={dark}
             setDark={setDark}
             items={items}
+            cart={cart}
           />
 
           <Routes>

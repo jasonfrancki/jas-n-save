@@ -3,6 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import GlobalStyles from '@mui/material/GlobalStyles'
 import {
   Box,
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -10,11 +11,12 @@ import {
   Container,
   Snackbar,
   SnackbarContent,
-  Button,
   IconButton,
   Typography,
+  Alert,
 } from '@mui/material'
 import './Items.css'
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
 
 const Items = ({
   results,
@@ -87,12 +89,15 @@ const Items = ({
                           // variant='subtitle1'
                           align='center'
                         >
-                          <button
-                            className='add-button'
+                          <Button
+                            // className='add-button'
+                            variant='contained'
+                            size='large'
+                            sx={{ width: '100%' }}
                             onClick={() => addToCart(item._id)}
                           >
-                            Add to cart
-                          </button>
+                            <AddShoppingCartIcon />
+                          </Button>
                         </Typography>
                       </ul>
                     </Box>
@@ -103,19 +108,21 @@ const Items = ({
         </Grid>
       </Container>
       <Snackbar
-        style={{ color: 'red' }}
         open={snackOpen}
         autoHideDuration={1500}
         onClose={handleSnackClose}
         action={action}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <SnackbarContent
-          style={{
-            backgroundColor: 'teal',
-          }}
-          message={<span id='client-snackbar'>{cartMessage}</span>}
-        ></SnackbarContent>
+        <Alert
+          variant='filled'
+          sx={{ width: '100%', fontSize: '1.5rem' }}
+          severity={
+            cartMessage.toLowerCase() === 'added to cart' ? 'success' : 'error'
+          }
+        >
+          <span id='client-snackbar'>{cartMessage}</span>
+        </Alert>
       </Snackbar>
     </React.Fragment>
     // <div className='items'>
