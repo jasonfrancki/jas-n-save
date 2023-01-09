@@ -21,13 +21,21 @@ function urlFor(source) {
   return builder.image(source)
 }
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem('cart') || '[]')
+
 function App() {
   const [items, setItems] = useState([])
   const [query, setQuery] = useState('')
   const [results, setResults] = useState([])
-  const [cart, setCart] = useState([])
+  const [cart, setCart] = useState(cartFromLocalStorage)
   const [snackOpen, setSnackOpen] = useState(false)
   const [cartMessage, setCartMessage] = useState('')
+
+  // Get and Save cart state to local storage
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart))
+  }, [cart])
 
   const addToCart = (id) => {
     const newCartItem = results.filter((item) => item._id === id)
