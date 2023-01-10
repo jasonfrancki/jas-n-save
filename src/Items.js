@@ -16,7 +16,7 @@ import {
   Alert,
 } from '@mui/material'
 import './Items.css'
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import Item from './Item'
 
 const Items = ({
   results,
@@ -45,6 +45,9 @@ const Items = ({
         styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
       />
       <CssBaseline />
+      <Typography sx={{ mb: 5 }} variant='h1' align='center'>
+        Items
+      </Typography>
       <Container maxWidth='md' component='main'>
         <Grid container spacing={5} alignItems='flex-end'>
           {results
@@ -53,63 +56,7 @@ const Items = ({
               if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             })
             .map((item) => (
-              <Grid item key={item._id} xs={12} sm={6} md={4}>
-                <Card>
-                  {/* <CardHeader
-                    className='card-header'
-                    title={item.name}
-                    titleTypographyProps={{ align: 'center', variant: 'h5' }}
-                    sx={{
-                      backgroundColor: (theme) =>
-                        theme.palette.mode === 'light'
-                          ? theme.palette.grey[200]
-                          : theme.palette.grey[700],
-                    }}
-                  /> */}
-                  <CardContent>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'baseline',
-                      }}
-                    >
-                      <ul>
-                        {/* ---------- */}
-                        {/* Item Image */}
-                        {/* ---------- */}
-
-                        <img
-                          className='item-image'
-                          src={urlFor(item.image.asset._ref).width(300).url()}
-                        />
-
-                        {/* --------- */}
-                        {/* Item Name */}
-                        {/* --------- */}
-
-                        <Typography variant='h6' align='center' sx={{ mb: 1 }}>
-                          {item.name}
-                        </Typography>
-
-                        {/* ------------------ */}
-                        {/* Add to Cart button */}
-                        {/* ------------------ */}
-
-                        <Button
-                          // className='add-button'
-                          variant='contained'
-                          size='large'
-                          sx={{ width: '100%' }}
-                          onClick={() => addToCart(item._id)}
-                        >
-                          <AddShoppingCartIcon />
-                        </Button>
-                      </ul>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
+              <Item urlFor={urlFor} item={item} addToCart={addToCart} />
             ))}
         </Grid>
       </Container>
@@ -122,12 +69,21 @@ const Items = ({
       >
         <Alert
           variant='filled'
-          sx={{ width: '100%', fontSize: '1.5rem' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '80%',
+            fontSize: '1rem',
+            textAlign: 'center',
+          }}
           severity={
             cartMessage.toLowerCase() === 'added to cart' ? 'success' : 'error'
           }
         >
-          <span id='client-snackbar'>{cartMessage}</span>
+          <h3 className='cart-message' id='client-snackbar'>
+            {cartMessage}
+          </h3>
         </Alert>
       </Snackbar>
     </React.Fragment>

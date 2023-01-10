@@ -1,41 +1,70 @@
 import { Link } from 'react-router-dom'
 import './Cart.css'
+import * as React from 'react'
+import CssBaseline from '@mui/material/CssBaseline'
+import GlobalStyles from '@mui/material/GlobalStyles'
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Grid,
+  Container,
+  Snackbar,
+  SnackbarContent,
+  IconButton,
+  Typography,
+  Alert,
+} from '@mui/material'
+import Item from './Item'
+import { width } from '@mui/system'
 
 const Cart = ({ results, urlFor, setCart }) => {
   return (
-    <div className='cart'>
-      <h1>Cart</h1>
-      <button onClick={() => setCart([])}>Empty</button>
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      <div className='items cart-items'>
+    <React.Fragment>
+      <GlobalStyles
+        styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
+      />
+      <CssBaseline />
+      <Typography sx={{ mb: 5 }} variant='h1' align='center'>
+        Cart
+      </Typography>
+      {results.length > 0 && (
+        <Box textAlign='center'>
+          <Button
+            size='large'
+            sx={{ mb: 5 }}
+            variant='contained'
+            color='error'
+            onClick={() => setCart([])}
+          >
+            Empty
+          </Button>
+        </Box>
+      )}
+
+      <Container maxWidth='md' component='main'>
         {results.length < 1 ? (
-          <>
-            <div>Cart is empty</div>
-          </>
+          <Typography variant='h6' align='center'>
+            Cart is empty
+          </Typography>
         ) : (
-          results
-            .sort((a, b) => {
-              if (a.location.toLowerCase() < b.location.toLowerCase()) return -1
-              if (a.location.toLowerCase() > b.location.toLowerCase()) return 1
-            })
-            .map((item) => {
-              const { _id, image, name, location, price } = item
-              return (
-                <div className='item' key={_id}>
-                  <div className='img-container'>
-                    <img src={urlFor(image.asset._ref).width(300).url()} />
-                  </div>
-                  <h3>{name}</h3>
-                  <h5>{location}</h5>
-                  <h6>{price}</h6>
-                </div>
-              )
-            })
+          <Grid container spacing={5} alignItems='flex-end'>
+            {results
+              .sort((a, b) => {
+                if (a.location.toLowerCase() < b.location.toLowerCase())
+                  return -1
+                if (a.location.toLowerCase() > b.location.toLowerCase())
+                  return 1
+              })
+              .map((item) => (
+                <Item urlFor={urlFor} item={item} />
+              ))}
+          </Grid>
         )}
-      </div>
-    </div>
+      </Container>
+    </React.Fragment>
   )
 }
 export default Cart

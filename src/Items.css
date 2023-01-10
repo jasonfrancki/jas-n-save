@@ -36,6 +36,10 @@
   width: 100%;
 }
 
+.cart-message {
+  text-align: right;
+}
+
 @media screen and (min-width: 700px) {
   .items {
     grid-template-columns: 1fr 1fr;
