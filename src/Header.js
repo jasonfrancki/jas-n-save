@@ -122,7 +122,7 @@ const Header = ({ setQuery, dark, setDark, items, cart }) => {
           {useLocation().pathname === '/' ? (
             <Autocomplete
               selectOnFocus
-              clearOnBlur
+              // clearOnBlur
               freeSolo
               disablePortal
               id='combo-box-demo'

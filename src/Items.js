@@ -45,6 +45,9 @@ const Items = ({
         styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
       />
       <CssBaseline />
+      <Typography sx={{ mb: 5 }} variant='h1' align='center'>
+        Items
+      </Typography>
       <Container maxWidth='md' component='main'>
         <Grid container spacing={5} alignItems='flex-end'>
           {results
@@ -66,12 +69,21 @@ const Items = ({
       >
         <Alert
           variant='filled'
-          sx={{ width: '100%', fontSize: '1.5rem' }}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '80%',
+            fontSize: '1rem',
+            textAlign: 'center',
+          }}
           severity={
             cartMessage.toLowerCase() === 'added to cart' ? 'success' : 'error'
           }
         >
-          <span id='client-snackbar'>{cartMessage}</span>
+          <h3 className='cart-message' id='client-snackbar'>
+            {cartMessage}
+          </h3>
         </Alert>
       </Snackbar>
     </React.Fragment>
