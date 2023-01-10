@@ -32,7 +32,13 @@ const Item = ({ item, urlFor, addToCart }) => {
               <Typography
                 variant='h6'
                 align='center'
-                sx={{ mb: 0.5, height: '4rem' }}
+                sx={{
+                  mb: 0.5,
+                  height: '4rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
               >
                 {item.name}
               </Typography>
