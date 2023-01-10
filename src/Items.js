@@ -16,7 +16,7 @@ import {
   Alert,
 } from '@mui/material'
 import './Items.css'
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import Item from './Item'
 
 const Items = ({
   results,
@@ -53,63 +53,7 @@ const Items = ({
               if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             })
             .map((item) => (
-              <Grid item key={item._id} xs={12} sm={6} md={4}>
-                <Card>
-                  {/* <CardHeader
-                    className='card-header'
-                    title={item.name}
-                    titleTypographyProps={{ align: 'center', variant: 'h5' }}
-                    sx={{
-                      backgroundColor: (theme) =>
-                        theme.palette.mode === 'light'
-                          ? theme.palette.grey[200]
-                          : theme.palette.grey[700],
-                    }}
-                  /> */}
-                  <CardContent>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'baseline',
-                      }}
-                    >
-                      <ul>
-                        {/* ---------- */}
-                        {/* Item Image */}
-                        {/* ---------- */}
-
-                        <img
-                          className='item-image'
-                          src={urlFor(item.image.asset._ref).width(300).url()}
-                        />
-
-                        {/* --------- */}
-                        {/* Item Name */}
-                        {/* --------- */}
-
-                        <Typography variant='h6' align='center' sx={{ mb: 1 }}>
-                          {item.name}
-                        </Typography>
-
-                        {/* ------------------ */}
-                        {/* Add to Cart button */}
-                        {/* ------------------ */}
-
-                        <Button
-                          // className='add-button'
-                          variant='contained'
-                          size='large'
-                          sx={{ width: '100%' }}
-                          onClick={() => addToCart(item._id)}
-                        >
-                          <AddShoppingCartIcon />
-                        </Button>
-                      </ul>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </Grid>
+              <Item urlFor={urlFor} item={item} addToCart={addToCart} />
             ))}
         </Grid>
       </Container>
