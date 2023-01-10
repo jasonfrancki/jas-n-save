@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap');
+
 .items {
   display: grid;
   padding: 10rem 5rem 5rem;
@@ -10,11 +12,16 @@
   margin: auto;
 }
 
-.item {
+/* .item {
   border: 2px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+} */
+
+.card-header {
+  font-family: 'Roboto', sans-serif;
+  height: 7rem;
 }
 
 .item-image {

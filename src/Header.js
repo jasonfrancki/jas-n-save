@@ -63,13 +63,16 @@ const Header = ({ setQuery, dark, setDark, items, cart }) => {
     <Box className='header-box' sx={{ flexGrow: 1 }}>
       <AppBar position='fixed'>
         <Toolbar>
-          {' '}
+          {/* ----------- */}
+          {/* Cart Button */}
+          {/* ----------- */}
+
           <IconButton
             size='large'
             edge='start'
             color='inherit'
             aria-label={dark ? 'shopping cart' : 'list items'}
-            sx={{ ml: 2 }}
+            sx={{ mr: 2 }}
           >
             {useLocation().pathname === '/' ? (
               <Link style={{ fontSize: 0 }} to='cart'>
@@ -83,16 +86,26 @@ const Header = ({ setQuery, dark, setDark, items, cart }) => {
               </Link>
             )}
           </IconButton>
+
+          {/* ---------------------- */}
+          {/* Dark/Light Mode Button */}
+          {/* ---------------------- */}
+
           <IconButton
             onClick={() => setDark(!dark)}
             size='large'
             edge='start'
             color='inherit'
             aria-label={dark ? 'shopping cart' : 'list items'}
-            sx={{ ml: 2 }}
+            sx={{ mr: 2 }}
           >
             {dark ? <LightModeIcon /> : <DarkModeIcon />}
           </IconButton>
+
+          {/* ---------- */}
+          {/* Store Name */}
+          {/* ---------- */}
+
           <Typography
             variant='h6'
             noWrap
@@ -101,6 +114,11 @@ const Header = ({ setQuery, dark, setDark, items, cart }) => {
           >
             Jas 'n Save
           </Typography>
+
+          {/* ---------- */}
+          {/* Search Bar */}
+          {/* ---------- */}
+
           {useLocation().pathname === '/' ? (
             <Autocomplete
               selectOnFocus
@@ -119,58 +137,9 @@ const Header = ({ setQuery, dark, setDark, items, cart }) => {
           ) : (
             ''
           )}
-          {/* <Search
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value)
-            }}
-          >
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder='Search…'
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */}
         </Toolbar>
       </AppBar>
     </Box>
-    // <header className='header'>
-    //   <div className='header-container'>
-    //     <input
-    //       placeholder='Search'
-    //       type='text'
-    //       value={query}
-    //       onChange={(e) => {
-    //         setQuery(e.target.value)
-    //       }}
-    //     />
-    //     <button onClick={() => setQuery('')} className='header-button'>
-    //       X
-    //     </button>
-    //     <button
-    //       className={dark ? 'dark header-button' : 'light header-button'}
-    //       onClick={() => setDark(!dark)}
-    //     >
-    //       {dark ? <LightModeIcon /> : <DarkModeIcon />}
-    //     </button>
-
-    //     {useLocation().pathname === '/' ? (
-    //       <Link to='cart'>
-    //         <button className='header-button'>
-    //           <ShoppingCartIcon />
-    //         </button>
-    //       </Link>
-    //     ) : (
-    //       <Link to='/'>
-    //         <button className='header-button'>
-    //           <MenuIcon />
-    //         </button>
-    //       </Link>
-    //     )}
-    //   </div>
-    // </header>
   )
 }
 export default Header

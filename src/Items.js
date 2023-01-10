@@ -55,16 +55,17 @@ const Items = ({
             .map((item) => (
               <Grid item key={item._id} xs={12} sm={6} md={4}>
                 <Card>
-                  <CardHeader
+                  {/* <CardHeader
+                    className='card-header'
                     title={item.name}
-                    titleTypographyProps={{ align: 'center' }}
+                    titleTypographyProps={{ align: 'center', variant: 'h5' }}
                     sx={{
                       backgroundColor: (theme) =>
                         theme.palette.mode === 'light'
                           ? theme.palette.grey[200]
                           : theme.palette.grey[700],
                     }}
-                  />
+                  /> */}
                   <CardContent>
                     <Box
                       sx={{
@@ -74,31 +75,36 @@ const Items = ({
                       }}
                     >
                       <ul>
-                        <Typography
-                          component='li'
-                          // variant='item-image'
-                          align='center'
-                        >
-                          <img
-                            className='item-image'
-                            src={urlFor(item.image.asset._ref).width(300).url()}
-                          />
+                        {/* ---------- */}
+                        {/* Item Image */}
+                        {/* ---------- */}
+
+                        <img
+                          className='item-image'
+                          src={urlFor(item.image.asset._ref).width(300).url()}
+                        />
+
+                        {/* --------- */}
+                        {/* Item Name */}
+                        {/* --------- */}
+
+                        <Typography variant='h6' align='center' sx={{ mb: 1 }}>
+                          {item.name}
                         </Typography>
-                        <Typography
-                          component='li'
-                          // variant='subtitle1'
-                          align='center'
+
+                        {/* ------------------ */}
+                        {/* Add to Cart button */}
+                        {/* ------------------ */}
+
+                        <Button
+                          // className='add-button'
+                          variant='contained'
+                          size='large'
+                          sx={{ width: '100%' }}
+                          onClick={() => addToCart(item._id)}
                         >
-                          <Button
-                            // className='add-button'
-                            variant='contained'
-                            size='large'
-                            sx={{ width: '100%' }}
-                            onClick={() => addToCart(item._id)}
-                          >
-                            <AddShoppingCartIcon />
-                          </Button>
-                        </Typography>
+                          <AddShoppingCartIcon />
+                        </Button>
                       </ul>
                     </Box>
                   </CardContent>
