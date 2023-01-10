@@ -29,7 +29,11 @@ const Item = ({ item, urlFor, addToCart }) => {
               {/* Item Name */}
               {/* --------- */}
 
-              <Typography variant='h6' align='center' sx={{ mb: 0.5 }}>
+              <Typography
+                variant='h6'
+                align='center'
+                sx={{ mb: 0.5, height: '4rem' }}
+              >
                 {item.name}
               </Typography>
 

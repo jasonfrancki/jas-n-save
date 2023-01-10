@@ -73,7 +73,7 @@ const Items = ({
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '80%',
+            width: '100%',
             fontSize: '1rem',
             textAlign: 'center',
           }}
