@@ -1,3 +1,11 @@
+# Purpose
+
+I built this app to help make my grocery store visits more efficient by helping me make a list and sort the items by aisle number or department so I can go from one end of the store to the other without missing any items and having to go back.
+
+# Technology Used
+
+The app uses React and fetches the data from an API built from Sanity CMS.
+
 # ToDo
 
 - badge number on cart icon to show how many items - maybe an animation instead of snackbar that shows the increase for confirmation
