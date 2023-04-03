@@ -1,9 +1,10 @@
 import { Grid, Card, CardContent, Box, Button, Typography } from '@mui/material'
 import { useLocation } from 'react-router-dom'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart'
 import './item.css'
 
-const Item = ({ item, urlFor, addToCart }) => {
+const Item = ({ item, urlFor, addToCart, removeFromCart }) => {
   return (
     <Grid item key={item._id} xs={12} sm={6} md={4}>
       <Card>
@@ -21,7 +22,7 @@ const Item = ({ item, urlFor, addToCart }) => {
               {/* ---------- */}
 
               <img
-                className='item-image'
+                className="item-image"
                 src={urlFor(item.image.asset._ref).width(300).url()}
               />
 
@@ -30,8 +31,8 @@ const Item = ({ item, urlFor, addToCart }) => {
               {/* --------- */}
 
               <Typography
-                variant='h6'
-                align='center'
+                variant="h6"
+                align="center"
                 sx={{
                   mb: 0.5,
                   height: '4rem',
@@ -47,7 +48,7 @@ const Item = ({ item, urlFor, addToCart }) => {
               {/* Item Location */}
               {/* ------------- */}
 
-              <Typography align='center'>{item.location}</Typography>
+              <Typography align="center">{item.location}</Typography>
 
               {/* ------------------ */}
               {/* Add to Cart button */}
@@ -56,12 +57,27 @@ const Item = ({ item, urlFor, addToCart }) => {
               {useLocation().pathname === '/' && (
                 <Button
                   // className='add-button'
-                  variant='contained'
-                  size='large'
+                  variant="contained"
+                  size="large"
                   sx={{ width: '100%', mt: 2 }}
                   onClick={() => addToCart(item._id)}
                 >
                   <AddShoppingCartIcon />
+                </Button>
+              )}
+              {/* ------------------ */}
+              {/* Remove from Cart button */}
+              {/* ------------------ */}
+
+              {useLocation().pathname === '/cart' && (
+                <Button
+                  // className='add-button'
+                  variant="contained"
+                  size="large"
+                  sx={{ width: '100%', mt: 2 }}
+                  onClick={() => removeFromCart(item._id)}
+                >
+                  <RemoveShoppingCartIcon />
                 </Button>
               )}
             </ul>

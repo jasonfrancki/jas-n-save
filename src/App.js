@@ -96,7 +96,7 @@ function App() {
       <GlobalStyles />
       <CssBaseline />
       <BrowserRouter>
-        <div className='App'>
+        <div className="App">
           <Header
             query={query}
             setQuery={setQuery}
@@ -108,7 +108,7 @@ function App() {
 
           <Routes>
             <Route
-              path='/'
+              path="/"
               element={
                 <Items
                   results={results}
@@ -122,7 +122,7 @@ function App() {
               }
             />
             <Route
-              path='cart'
+              path="cart"
               element={
                 <Cart results={cart} setCart={setCart} urlFor={urlFor} />
               }
