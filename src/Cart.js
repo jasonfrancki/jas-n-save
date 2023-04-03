@@ -21,22 +21,29 @@ import Item from './Item'
 import { width } from '@mui/system'
 
 const Cart = ({ results, urlFor, setCart }) => {
+  const removeFromCart = (id) => {
+    const newCart = results.filter((item) => item._id !== id)
+    console.log(results)
+    console.log(newCart)
+    setCart(newCart)
+  }
+
   return (
     <React.Fragment>
       <GlobalStyles
         styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
       />
       <CssBaseline />
-      <Typography sx={{ mb: 5 }} variant='h1' align='center'>
+      <Typography sx={{ mb: 5 }} variant="h1" align="center">
         Cart
       </Typography>
       {results.length > 0 && (
-        <Box textAlign='center'>
+        <Box textAlign="center">
           <Button
-            size='large'
+            size="large"
             sx={{ mb: 5 }}
-            variant='contained'
-            color='error'
+            variant="contained"
+            color="error"
             onClick={() => setCart([])}
           >
             Empty
@@ -44,13 +51,13 @@ const Cart = ({ results, urlFor, setCart }) => {
         </Box>
       )}
 
-      <Container maxWidth='md' component='main'>
+      <Container maxWidth="md" component="main">
         {results.length < 1 ? (
-          <Typography variant='h6' align='center'>
+          <Typography variant="h6" align="center">
             Cart is empty
           </Typography>
         ) : (
-          <Grid container spacing={5} alignItems='flex-end'>
+          <Grid container spacing={5} alignItems="flex-end">
             {results
               .sort((a, b) => {
                 if (a.location.toLowerCase() < b.location.toLowerCase())
@@ -59,7 +66,12 @@ const Cart = ({ results, urlFor, setCart }) => {
                   return 1
               })
               .map((item) => (
-                <Item urlFor={urlFor} item={item} />
+                <Item
+                  key={item._id}
+                  urlFor={urlFor}
+                  item={item}
+                  removeFromCart={removeFromCart}
+                />
               ))}
           </Grid>
         )}

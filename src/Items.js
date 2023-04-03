@@ -29,9 +29,9 @@ const Items = ({
   const action = (
     <>
       <IconButton
-        size='small'
-        aria-label='close'
-        color='inherit'
+        size="small"
+        aria-label="close"
+        color="inherit"
         onClick={handleSnackClose}
       >
         X
@@ -45,18 +45,23 @@ const Items = ({
         styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }}
       />
       <CssBaseline />
-      <Typography sx={{ mb: 5 }} variant='h1' align='center'>
+      <Typography sx={{ mb: 5 }} variant="h1" align="center">
         Items
       </Typography>
-      <Container maxWidth='md' component='main'>
-        <Grid container spacing={5} alignItems='flex-end'>
+      <Container maxWidth="md" component="main">
+        <Grid container spacing={5} alignItems="flex-end">
           {results
             .sort((a, b) => {
               if (a.name.toLowerCase() < b.name.toLowerCase()) return -1
               if (a.name.toLowerCase() > b.name.toLowerCase()) return 1
             })
             .map((item) => (
-              <Item urlFor={urlFor} item={item} addToCart={addToCart} />
+              <Item
+                key={item._id}
+                urlFor={urlFor}
+                item={item}
+                addToCart={addToCart}
+              />
             ))}
         </Grid>
       </Container>
@@ -68,7 +73,7 @@ const Items = ({
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert
-          variant='filled'
+          variant="filled"
           sx={{
             display: 'flex',
             justifyContent: 'center',
@@ -81,7 +86,7 @@ const Items = ({
             cartMessage.toLowerCase() === 'added to cart' ? 'success' : 'error'
           }
         >
-          <h3 className='cart-message' id='client-snackbar'>
+          <h3 className="cart-message" id="client-snackbar">
             {cartMessage}
           </h3>
         </Alert>
