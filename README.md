@@ -6,17 +6,6 @@ I built this app to help make my grocery store visits more efficient by helping 
 
 The app uses React and fetches the data from an API built from Sanity CMS.
 
-# ToDo
-
-- badge number on cart icon to show how many items - maybe an animation instead of snackbar that shows the increase for confirmation
-- add to cart button animation/transition to show click
-- snackbar for add-to-cart confirmation https://mui.com/material-ui/react-snackbar/
-- make snackbar clickable to go to cart if possible?
-- localstorage for cart state
-- add react router for Cart page
-- CSS styling
-- favorites for common groceries to browse when looking for ideas
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
