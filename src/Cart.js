@@ -37,19 +37,6 @@ const Cart = ({ results, urlFor, setCart }) => {
       <Typography sx={{ mb: 5 }} variant="h1" align="center">
         Cart
       </Typography>
-      {results.length > 0 && (
-        <Box textAlign="center">
-          <Button
-            size="large"
-            sx={{ mb: 5 }}
-            variant="contained"
-            color="error"
-            onClick={() => setCart([])}
-          >
-            Empty
-          </Button>
-        </Box>
-      )}
 
       <Container maxWidth="md" component="main">
         {results.length < 1 ? (
@@ -76,6 +63,19 @@ const Cart = ({ results, urlFor, setCart }) => {
           </Grid>
         )}
       </Container>
+      {results.length > 0 && (
+        <Box textAlign="center">
+          <Button
+            size="large"
+            sx={{ my: 5 }}
+            variant="contained"
+            color="error"
+            onClick={() => setCart([])}
+          >
+            Empty
+          </Button>
+        </Box>
+      )}
     </React.Fragment>
   )
 }
